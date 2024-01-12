@@ -1,6 +1,13 @@
+const startButton = document.getElementById("start");
+
 // 1. create questions 
   //1.1 how to store questions. Object. Array easier to iterate
-// 2. start button that when clicked - event listener 
+
+
+// 2. start button that when clicked
+  //2.1 event listener 
+  startButton.addEventListener("click")
+
 // 3.timer - check timer class activity
 // 4. buttons for each answer
 // 5. When answer is clicked, the next question appears - event listener
