@@ -64,8 +64,8 @@ const questions = [
     options: [
       "JavaScript Object Notation",
       "JavaScript Object Naming",
-      "Java Serialized Object Notation",
-      "Java Serialized Object Naming"
+      "Java Serialised Object Notation",
+      "Java Serialised Object Naming"
     ],
     correctAnswer: "a"
   },
