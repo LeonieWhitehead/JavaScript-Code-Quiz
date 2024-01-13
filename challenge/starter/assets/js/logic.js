@@ -1,50 +1,48 @@
 // 1. create questions 
   //1.1 how to store questions. Object. Array easier to iterate
-// questions = document.querySelector("#questions");
 const scoreTimerEl = document.getElementById ("time");
 const finalScore = document.getElementById("final-score");
-let startBtn = document.getElementById("start");
+const startBtn = document.getElementById("start");
+const startScreen = document.getElementById ("start-screen");
+const questionTitleEl = document.getElementById("question-title");
+const choicesContainer = document.getElementById("choices-container");
 
-
-
-
-// track score
-let score =0;
-
-// track time
-let secondsLeft =60;
-
-// track which question the user is on
-let currentQuestion =0;
-
-// track correct answers
+// track score,time, current question and correct answers
+let score = 0;
+let secondsLeft = 60;
+let currentQuestion = 0;
 let correctAnswer = 0;
 
 // track final score
 
 // // 2. start button that when clicked
 //   //2.1 event listener 
-// startBtn = document.querySelector("start");
 startBtn.addEventListener("click", () =>{
   console.log("button clicked");
+
+// hide start page
+  startScreen.style.display = "none";
+  console.log("start screen hidden");
+
+  //start the quiz by showing first question
+  showQuestion();
 });
 
-//   startBtn.addEventListener("click", function(){
-//     hideDiv("start-screen");
-//     showDiv("questions");
-//   });
-// hide start page
-
-
-  //start the quiz
   function showQuestion(){
-    const questionTitleEl = document.getElementById("question-title");
+    console.log("Showing question");
+    // display question title
     questionTitleEl.textContent = questions[currentQuestion].question;
   
-    const choicesEl = document.querySelectorAll(".choices");
-    choicesEl.forEach((choicesEl, index) =>{
-    choicesEl.textContent = questions[currentQuestion].choices[index];
-  });
+    // display choices
+    choicesContainer.innerHTML = "";
+    questions[currentQuestion].choices.forEach((choices, index)) => {
+      
+    }
+    // const choicesEl = document.querySelectorAll(".choices");
+
+    // choicesEl.forEach((choices, index) =>{
+    // choices.textContent = questions[currentQuestion].choices[index];
+  };
 // 3.timer - check timer class activity
   // set function
   function countdown() {
@@ -67,4 +65,3 @@ startBtn.addEventListener("click", () =>{
 // 7. quiz ends when all questions are answered or the timer reaches 0.
   // 7.1 When the game ends, it should display their score
   // 7.2 give the user the ability to save their initials and their score
-}
