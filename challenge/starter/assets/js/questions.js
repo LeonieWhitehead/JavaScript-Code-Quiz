@@ -1,7 +1,7 @@
 const questions = [
   {
     question: "What is the purpose of the 'document.getElementById()' method in JavaScript?",
-    options: [
+    choices: [
       "To retrieve an HTML element by its class name",
       "To retrieve an HTML element by its tag name",
       "To retrieve an HTML element by its ID",
@@ -11,7 +11,7 @@ const questions = [
   },
   {
     question: "Which keyword is used to declare a variable in JavaScript?",
-    options: [
+    choices: [
       "var",
       "let",
       "const",
@@ -21,7 +21,7 @@ const questions = [
   },
   {
     question: "What does the '=== ' operator do in JavaScript?",
-    options: [
+    choices: [
       "Checks for equality without type coercion",
       "Checks for equality with type coercion",
       "Checks for inequality without type coercion",
@@ -31,7 +31,7 @@ const questions = [
   },
   {
     question: "How do you create a new array in JavaScript?",
-    options: [
+    choices: [
       "new Array()",
       "[]",
       "array()",
@@ -41,7 +41,7 @@ const questions = [
   },
   {
     question: "What is the purpose of the 'addEventListener()' method in JavaScript?",
-    options: [
+    choices: [
       "To remove an event listener",
       "To add an event listener",
       "To check if an event listener is active",
@@ -51,7 +51,7 @@ const questions = [
   },
   {
     question: "Which of the following is not a valid way to declare a function in JavaScript?",
-    options: [
+    choices: [
       "function myFunction() {}",
       "var myFunction = function() {}",
       "const myFunction = () => {}",
@@ -61,7 +61,7 @@ const questions = [
   },
   {
     question: "What does the 'JSON' acronym stand for in JavaScript?",
-    options: [
+    choices: [
       "JavaScript Object Notation",
       "JavaScript Object Naming",
       "Java Serialised Object Notation",
@@ -71,7 +71,7 @@ const questions = [
   },
   {
     question: "How can you prevent the default behavior of an HTML form submission using JavaScript?",
-    options: [
+    choices: [
       "event.stop()",
       "event.halt()",
       "event.preventDefault()",
@@ -81,7 +81,7 @@ const questions = [
   },
   {
     question: "What is the purpose of the 'localStorage' object in JavaScript?",
-    options: [
+    choices: [
       "To store session-specific data on the server",
       "To store data locally in the user's browser",
       "To store cookies",
@@ -91,7 +91,7 @@ const questions = [
   },
   {
     question: "Which built-in function is used to sort the elements of an array in JavaScript?",
-    options: [
+    choices: [
       "sortArray()",
       "arrangeArray()",
       "sort()",
@@ -103,5 +103,5 @@ const questions = [
 
 // Example usage:
 console.log(questions[0].question);
-console.log("Options:", questions[0].options);
+console.log("choices:", questions[0].choices);
 console.log("Correct Answer:", questions[0].correctAnswer);
