@@ -2,10 +2,10 @@
   //1.1 how to store questions. Object. Array easier to iterate
 // questions = document.querySelector("#questions");
 const scoreTimerEl = document.getElementById ("time");
-const questionTitleEl = document.getElementById("question-title");
-const choicesEl = document.getElementById("choices");
 const finalScore = document.getElementById("final-score");
-const startBtn = document.getElementById("start");
+let startBtn = document.getElementById("start");
+
+
 
 
 // track score
@@ -17,25 +17,34 @@ let secondsLeft =60;
 // track which question the user is on
 let currentQuestion =0;
 
-
-// track current score?
+// track correct answers
+let correctAnswer = 0;
 
 // track final score
 
+// // 2. start button that when clicked
+//   //2.1 event listener 
+// startBtn = document.querySelector("start");
+startBtn.addEventListener("click", () =>{
+  console.log("button clicked");
+});
 
-// 2. start button that when clicked
-  //2.1 event listener 
-  startBtn.addEventListener("click", function(){
-    
-  });
+//   startBtn.addEventListener("click", function(){
+//     hideDiv("start-screen");
+//     showDiv("questions");
+//   });
+// hide start page
+
 
   //start the quiz
-
-  function startQuiz() {
-    currentQuestion =0;
-    finalScore = questions.length;
-
-  // }
+  function showQuestion(){
+    const questionTitleEl = document.getElementById("question-title");
+    questionTitleEl.textContent = questions[currentQuestion].question;
+  
+    const choicesEl = document.querySelectorAll(".choices");
+    choicesEl.forEach((choicesEl, index) =>{
+    choicesEl.textContent = questions[currentQuestion].choices[index];
+  });
 // 3.timer - check timer class activity
   // set function
   function countdown() {
@@ -44,6 +53,10 @@ let currentQuestion =0;
 // add the question to the page
 // for (let i = 0; i < questions.length; i++) {
 //   // const element = array[index];
+// function showQuestion() {
+  
+// }
+
   
 // }
 // 4. buttons for each answer
