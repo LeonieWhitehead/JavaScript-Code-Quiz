@@ -7,7 +7,7 @@ const questions = [
       "To retrieve an HTML element by its ID",
       "To retrieve an HTML element by its name"
     ],
-    correctAnswer: "c"
+    correctAnswer: 3
   },
   {
     question: "Which keyword is used to declare a variable in JavaScript?",
@@ -17,7 +17,7 @@ const questions = [
       "const",
       "all of the above"
     ],
-    correctAnswer: "d"
+    correctAnswer: 4
   },
   {
     question: "What does the '=== ' operator do in JavaScript?",
@@ -27,7 +27,7 @@ const questions = [
       "Checks for inequality without type coercion",
       "Checks for inequality with type coercion"
     ],
-    correctAnswer: "a"
+    correctAnswer: 1
   },
   {
     question: "How do you create a new array in JavaScript?",
@@ -37,7 +37,7 @@ const questions = [
       "array()",
       "createArray()"
     ],
-    correctAnswer: "b"
+    correctAnswer: 2
   },
   {
     question: "What is the purpose of the 'addEventListener()' method in JavaScript?",
@@ -47,7 +47,7 @@ const questions = [
       "To check if an event listener is active",
       "To modify an existing event listener"
     ],
-    correctAnswer: "b"
+    correctAnswer: 2
   },
   {
     question: "Which of the following is not a valid way to declare a function in JavaScript?",
@@ -57,7 +57,7 @@ const questions = [
       "const myFunction = () => {}",
       "myFunction: function() {}"
     ],
-    correctAnswer: "d"
+    correctAnswer: 4
   },
   {
     question: "What does the 'JSON' acronym stand for in JavaScript?",
@@ -67,7 +67,7 @@ const questions = [
       "Java Serialised Object Notation",
       "Java Serialised Object Naming"
     ],
-    correctAnswer: "a"
+    correctAnswer: 1
   },
   {
     question: "How can you prevent the default behavior of an HTML form submission using JavaScript?",
@@ -77,7 +77,7 @@ const questions = [
       "event.preventDefault()",
       "event.cancel()"
     ],
-    correctAnswer: "c"
+    correctAnswer: 3
   },
   {
     question: "What is the purpose of the 'localStorage' object in JavaScript?",
@@ -87,7 +87,7 @@ const questions = [
       "To store cookies",
       "To store data in a database"
     ],
-    correctAnswer: "b"
+    correctAnswer: 2
   },
   {
     question: "Which built-in function is used to sort the elements of an array in JavaScript?",
@@ -97,7 +97,7 @@ const questions = [
       "sort()",
       "orderArray()"
     ],
-    correctAnswer: "c"
+    correctAnswer: 3
   }
 ];
 

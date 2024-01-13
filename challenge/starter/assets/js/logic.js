@@ -17,6 +17,7 @@ let secondsLeft =60;
 // track which question the user is on
 let currentQuestion =0;
 
+
 // track current score?
 
 // track final score
@@ -24,13 +25,15 @@ let currentQuestion =0;
 
 // 2. start button that when clicked
   //2.1 event listener 
-  // startBtn.addEventListener("click");
+  startBtn.addEventListener("click", function(){
+    
+  });
 
   //start the quiz
 
-  // function startQuiz() {
-  //   currentQuestion =0;
-  //   finalScore = questions.length;
+  function startQuiz() {
+    currentQuestion =0;
+    finalScore = questions.length;
 
   // }
 // 3.timer - check timer class activity
@@ -51,3 +54,4 @@ let currentQuestion =0;
 // 7. quiz ends when all questions are answered or the timer reaches 0.
   // 7.1 When the game ends, it should display their score
   // 7.2 give the user the ability to save their initials and their score
+}
