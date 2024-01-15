@@ -6,13 +6,14 @@ const questionElement = document.getElementById("question-title");
 // const questionTitleEl = document.getElementById("question-title");
 const optionsList = document.getElementById("choices");
 const timeCount = document.getElementById("time");
-let finalScore = document.getElementById("final-score");
+const finalScore = document.getElementById("final-score");
 
 // track score,time, current question and correct answers
 let currentQuestionIndex = 0;
 let userScore = 0;
 let secondsLeft = 60;
 let userSelections = [];
+let timerId;
 // let correctAnswer = 0;
 
 startBtn.addEventListener("click", function () {
@@ -51,7 +52,7 @@ function showQuestion() {
 // 3.timer - check timer class activity
 function countdown() {
     timeCount.textContent = secondsLeft;
-    var timerId = setInterval(() => {
+    timerId = setInterval(() => {
         secondsLeft--;
         timeCount.textContent = secondsLeft; 
         if (secondsLeft <= 0) {
@@ -81,15 +82,34 @@ function checkAnswer(selectedIndex) {
 
 function showResults() {
   // questionElement.textContent = `You scored ${userScore} out of ${questions.length}!`;
-  
+     // Calculate final score
+  finalScore.userScore -= secondsLeft / 10;
   optionsList.innerHTML = '';
   console.log("User selections:", userSelections);
 }
 
-function quizEnd() {
-  // Show end screen
-  document.querySelector("#end-screen").classList.remove("hide");
-}
+  function quizEnd() {
+    // Stop the timer
+    clearInterval(timerId);
+  
+    // Show end screen
+    document.querySelector("#end-screen").classList.remove("hide");
+    
+    // Check if the quiz ended due to time expiration
+    if (secondsLeft <= 0) {
+      // Display a message indicating time expiration
+      document.getElementById("final-score").textContent = "Time's up!";
+    } else {
+      // Display the actual final score
+      document.getElementById("final-score").textContent = userScore;
+      
+      // Save high score to local storage
+      let highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+      highscores.push({ name: "bingo", score: userScore });
+      localStorage.setItem("highscores", JSON.stringify(highscores));
+    }
+  }
+   
 
 // questionTitleEl.textContent = questions
 // optionsList.forEach((optionsList, index) => {
