@@ -23,7 +23,7 @@ startBtn.addEventListener("click", function () {
   startScreen.classList.add("hide");  // here we are ADDING to the class list
   // --> UNHIDE our questions container
   questionContainer.classList.remove('hide');
- 
+
   // questionElement.classList.add("activeQuiz");
   // document.querySelector("#start-screen").classList.remove("start");
   showQuestion();
@@ -51,14 +51,20 @@ function showQuestion() {
 
 // 3.timer - check timer class activity
 function countdown() {
-    timeCount.textContent = secondsLeft;
-    timerId = setInterval(() => {
-        secondsLeft--;
-        timeCount.textContent = secondsLeft; 
-        if (secondsLeft <= 0) {
-            clearInterval(timerId);
-        }
-    }, 1000); 
+  timeCount.textContent = secondsLeft;
+  timerId = setInterval(() => {
+    secondsLeft--;
+
+    if (secondsLeft >= 0) {
+      timeCount.textContent = secondsLeft;
+    }
+
+    if (secondsLeft <= 0) {
+      clearInterval(timerId);
+      questionContainer.classList.add('hide');
+      quizEnd();
+    }
+  }, 1000);
 }
 
 function checkAnswer(selectedIndex) {
@@ -68,7 +74,7 @@ function checkAnswer(selectedIndex) {
   if (selectedIndex === question.correctAnswer) {
     secondsLeft += 10;
     userScore += 10;
-  // }
+    // }
 
   } else {
     secondsLeft = Math.max(0, secondsLeft - 10);
@@ -76,7 +82,7 @@ function checkAnswer(selectedIndex) {
   currentQuestionIndex++;
   if (currentQuestionIndex < questions.length) {
     showQuestion();
-  }else{
+  } else {
     quizEnd();
     showResults();
   }
@@ -92,28 +98,28 @@ function showResults() {
   console.log("User selections:", userSelections);
 }
 
-  function quizEnd() {
-    // Stop the timer
-    clearInterval(timerId);
-  
-    // Show end screen
-    document.querySelector("#end-screen").classList.remove("hide");
-    
-    // Check if the quiz ended due to time expiration
-    if (secondsLeft <= 0) {
-      // Display a message indicating time expiration
-      document.getElementById("final-score").textContent = "Time's up!";
-    } else {
-      // Display the actual final score
-      document.getElementById("final-score").textContent = userScore;
-      
-      // Save high score to local storage
-      let highscores = JSON.parse(localStorage.getItem("highscores")) || [];
-      highscores.push({ name: "bingo", score: userScore });
-      localStorage.setItem("highscores", JSON.stringify(highscores));
-    }
+function quizEnd() {
+  // Stop the timer
+  clearInterval(timerId);
+
+  // Show end screen
+  document.querySelector("#end-screen").classList.remove("hide");
+
+  // Check if the quiz ended due to time expiration
+  if (secondsLeft <= 0) {
+    // Display a message indicating time expiration
+    document.getElementById("final-score").textContent = "Time's up!";
+  } else {
+    // Display the actual final score
+    document.getElementById("final-score").textContent = userScore;
+
+    // Save high score to local storage
+    let highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+    highscores.push({ name: "bingo", score: userScore });
+    localStorage.setItem("highscores", JSON.stringify(highscores));
   }
-   
+}
+
 
 // questionTitleEl.textContent = questions
 // optionsList.forEach((optionsList, index) => {
