@@ -66,15 +66,17 @@ function checkAnswer(selectedIndex) {
   userSelections[currentQuestionIndex] = selectedIndex;
 
   if (selectedIndex === question.correctAnswer) {
-    userScore+= 10;
-  }
+    secondsLeft += 10;
+    userScore += 10;
+  // }
 
+  } else {
+    secondsLeft = Math.max(0, secondsLeft - 10);
+  }
   currentQuestionIndex++;
   if (currentQuestionIndex < questions.length) {
     showQuestion();
-  } else {
-    secondsLeft -= 10;
-    
+  }else{
     quizEnd();
     showResults();
   }
