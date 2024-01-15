@@ -82,9 +82,11 @@ function checkAnswer(selectedIndex) {
 
 function showResults() {
   // questionElement.textContent = `You scored ${userScore} out of ${questions.length}!`;
-     // Calculate final score
-  finalScore.userScore -= secondsLeft / 10;
-  optionsList.innerHTML = '';
+  // Calculate final score (rounded to nearest integer)
+  userScore = Math.max(0, Math.round(userScore - secondsLeft / 10));
+
+  finalScore.textContent = `Your final score is: ${userScore}`;
+  // optionsList.innerHTML = '';
   console.log("User selections:", userSelections);
 }
 
