@@ -1,40 +1,36 @@
 //get all required elements
 const startBtn = document.getElementById("start");
 const startScreen = document.getElementById("start-screen");
-// const questionContainer = document.getElementById("questions");
+const questionContainer = document.getElementById("questions");
 const questionElement = document.getElementById("question-title");
 // const questionTitleEl = document.getElementById("question-title");
 const optionsList = document.getElementById("choices");
 const timeCount = document.getElementById("time");
+let finalScore = document.getElementById("final-score");
 
 // track score,time, current question and correct answers
 let currentQuestionIndex = 0;
 let userScore = 0;
 let secondsLeft = 60;
+let userSelections = [];
 // let correctAnswer = 0;
 
 startBtn.addEventListener("click", function () {
   console.log("button clicked");
-  // startScreen.classList.remove("removeStartScreen");
-  // questionContainer.classList.add("activeQuiz");
+  // --> lets hide the START container 
+  // startScreen.setAttribute('class', 'hide');  // here we are overwritting the class value
+  startScreen.classList.add("hide");  // here we are ADDING to the class list
+  // --> UNHIDE our questions container
+  questionContainer.classList.remove('hide');
+ 
+  // questionElement.classList.add("activeQuiz");
+  // document.querySelector("#start-screen").classList.remove("start");
   showQuestion();
   countdown();
 });
 
-// 3.timer - check timer class activity
-function countdown() {
-    timeCount.textContent = secondsLeft;
-    var timerId = setInterval(() => {
-        secondsLeft--;
-        timeCount.textContent = secondsLeft; 
-        if (secondsLeft <= 0) {
-            clearInterval(timerId);
-        }
-    }, 1000); 
-}
-
 function showQuestion() {
-  // if (currentQuestion >= questions.length) {
+  // if (currentQuestionIndex >= questions.length) {
   //   // End the quiz
   //   return;
   // }
@@ -52,9 +48,23 @@ function showQuestion() {
   });
 }
 
+// 3.timer - check timer class activity
+function countdown() {
+    timeCount.textContent = secondsLeft;
+    var timerId = setInterval(() => {
+        secondsLeft--;
+        timeCount.textContent = secondsLeft; 
+        if (secondsLeft <= 0) {
+            clearInterval(timerId);
+        }
+    }, 1000); 
+}
+
 function checkAnswer(selectedIndex) {
   const question = questions[currentQuestionIndex];
-  if (selectedIndex === question.correctIndex) {
+  userSelections[currentQuestionIndex] = selectedIndex;
+
+  if (selectedIndex === question.correctAnswer) {
     userScore+= 10;
   }
 
@@ -63,13 +73,17 @@ function checkAnswer(selectedIndex) {
     showQuestion();
   } else {
     secondsLeft -= 10;
+    
+    quizEnd();
     showResults();
   }
 }
 
 function showResults() {
-  questionElement.textContent = `You scored ${userScore} out of ${questions.length}!`;
+  // questionElement.textContent = `You scored ${userScore} out of ${questions.length}!`;
+  
   optionsList.innerHTML = '';
+  console.log("User selections:", userSelections);
 }
 
 function quizEnd() {
@@ -107,3 +121,42 @@ function quizEnd() {
 //    quizEnd();
 // });
 
+
+// highScores = [{}, {}]
+
+// JSON - JavaScript Object Notation - Data Interchange 
+// jsonObj = "{ "name": "bingo", "score": "50" }"
+// --> stringify()
+// --> parse()
+
+// -- We need to CAPTUER the USER input --
+// submit event --> capture data and then (?)
+// newUser = { name: "bingo", score: 50 } --> dATA
+
+// Persisting datastore - localStorage
+
+// If not KEY exisits to GRAB then we get UNDEFINED
+// var storedData = localStorage.getItem(key);
+// localStorage.setItem(key, value);
+localStorage.setItem("highscores", JSON.stringify([]));
+
+
+// How would we ADD or modifty stroed data(?)
+// 1) do we have stored Data(?)
+// -- YES --> GRAB that data
+// --- NO --> we need to initalize data
+
+var storedData = localStorage.getItem("highscores");
+console.log("data: ", storedData);
+console.log("type: ", typeof storedData);
+// data convertion
+var jsData = JSON.parse(storedData);
+console.log("data: ", jsData);
+console.log("type: ", typeof jsData);
+// "[]" | []
+// .push() .pop() .filter() .map()
+jsData.push({ name: "bingo", score: 50 })
+console.log("data: ", jsData);
+
+// we have to UPDATE locaStorage
+localStorage.setItem("highscores", JSON.stringify(jsData))
