@@ -163,7 +163,7 @@ function quizEnd() {
 
     // Save high score to local storage
     let highscores = JSON.parse(localStorage.getItem("highscores")) || [];
-    highscores.push({ name: "bingo", score: userScore });
+    highscores.push({ name: "", score: userScore });
     localStorage.setItem("highscores", JSON.stringify(highscores));
   }
 }
