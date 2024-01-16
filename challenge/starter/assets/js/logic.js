@@ -14,6 +14,7 @@ let userScore = 0;
 let secondsLeft = 60;
 let userSelections = [];
 let timerId;
+let finalScoreValue;
 // let correctAnswer = 0;
 
 startBtn.addEventListener("click", function () {
@@ -71,29 +72,51 @@ function checkAnswer(selectedIndex) {
   const question = questions[currentQuestionIndex];
   userSelections[currentQuestionIndex] = selectedIndex;
 
+  const feedbackElement = document.createElement("p");
+
   if (selectedIndex === question.correctAnswer) {
+    // Correct answer selected, add feedback 
+    feedbackElement.textContent = "Correct!";
+    feedbackElement.classList.add("correct-feedback");
+
     secondsLeft += 10;
     userScore += 10;
-    // }
 
   } else {
+    // Incorrect answer selected, add feedback 
+    feedbackElement.textContent = "Wrong!";
+    feedbackElement.classList.add("wrong-feedback");
+
     secondsLeft = Math.max(0, secondsLeft - 10);
   }
+
+    // Append the feedback element to the question container
+    questionContainer.appendChild(feedbackElement);
+
+    // setTimeout to remove the feedback
+    setTimeout(() => {
+      feedbackElement.remove();
+
   currentQuestionIndex++;
+
   if (currentQuestionIndex < questions.length) {
+    optionsList.innerHTML = "";
     showQuestion();
   } else {
     quizEnd();
+    questionContainer.classList.add('hide');
     showResults();
   }
+}, 1000);
 }
 
 function showResults() {
   // questionElement.textContent = `You scored ${userScore} out of ${questions.length}!`;
+  finalScoreValue = userScore + secondsLeft;
   // Calculate final score (rounded to nearest integer)
-  userScore = Math.max(0, Math.round(userScore - secondsLeft / 10));
+  // userScore = Math.max(0, Math.round(userScore - secondsLeft / 10));
 
-  finalScore.textContent = `Your final score is: ${userScore}`;
+  finalScore.textContent = `Your final score is: ${finalScoreValue}`;
   // optionsList.innerHTML = '';
   console.log("User selections:", userSelections);
 }
