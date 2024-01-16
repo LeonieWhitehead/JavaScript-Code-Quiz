@@ -117,8 +117,27 @@ function showResults() {
   // userScore = Math.max(0, Math.round(userScore - secondsLeft / 10));
 
   finalScore.textContent = `Your final score is: ${finalScoreValue}`;
+
+  // Show the initials input field and submit button
+  document.getElementById("initials").classList.remove("hide");
+  document.getElementById("submit").classList.remove("hide");
+
+  // Event listener for the submit button
+  document.getElementById("submit").addEventListener("click", function () {
+    // Get the user's initials from the input field
+    const userInitials = document.getElementById("initials").value;
+
+    // Store the user's initials and score in local storage
+    if (userInitials) {
+      let highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+      highscores.push({ initials: userInitials, score: finalScoreValue });
+      localStorage.setItem("highscores", JSON.stringify(highscores));
+    }
+  
+
   // optionsList.innerHTML = '';
   console.log("User selections:", userSelections);
+});
 }
 
 function quizEnd() {
