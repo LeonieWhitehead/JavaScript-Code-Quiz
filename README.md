@@ -35,5 +35,12 @@ Include more questions to diversify the quiz content.
 Implement a feature to record and display high scores.
 Enhance the user interface for a more engaging experience.
 
+## Collaboration/Resources
+Local storage add adding/removing classlists - Tutor - Erik
+
+https://www.codingninjas.com/studio/library/how-to-create-a-quiz-app-using-javascript
+
+https://www.youtube.com/watch?v=riDzcEQbX6k
+
 ## License
 This project is licensed under the MIT License.
