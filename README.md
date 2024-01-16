@@ -18,6 +18,7 @@ Display of the final score and feedback at the end of the quiz.
 ![Quiz Screenshot](https://github.com/LeonieWhitehead/JavaScript-Code-Quiz/blob/main/127.0.0.1_5501_challenge_starter_index.html%20(1).png?raw=true)
 
 ## Application Link
+https://leoniewhitehead.github.io/JavaScript-Code-Quiz/
 
 # Issues Faced
 During the development of this project, several issues were encountered:
