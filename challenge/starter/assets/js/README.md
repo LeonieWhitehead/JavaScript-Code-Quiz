@@ -14,6 +14,10 @@ Multiple-choice questions with options.
 Timer that penalises incorrect answers.
 Display of the final score and feedback at the end of the quiz.
 
+## Screenshot
+![Quiz Screenshot](https://github.com/LeonieWhitehead/JavaScript-Code-Quiz/blob/main/127.0.0.1_5501_challenge_starter_index.html%20(1).png?raw=true)
+
+## Application Link
 
 ## Issues Faced
 During the development of this project, several issues were encountered:
@@ -21,6 +25,9 @@ During the development of this project, several issues were encountered:
 # Timer Implementation:
 
 Implementing the timer functionality required careful consideration of asynchronous operations and interval handling. The countdown function was added to manage the timer, addressing issues related to time tracking.
+
+## Local Storage
+storing multiple users and scores on the hiscores page and ordering them.
 
 ## Future Improvements
 Include more questions to diversify the quiz content.

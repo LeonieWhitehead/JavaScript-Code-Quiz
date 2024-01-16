@@ -80,6 +80,9 @@ function checkAnswer(selectedIndex) {
     feedbackElement.textContent = "Correct!";
     feedbackElement.classList.add("correct-feedback");
 
+    // Play correct sound
+    document.getElementById("correctSound").play();
+
     secondsLeft += 10;
     userScore += 10;
 
@@ -87,6 +90,9 @@ function checkAnswer(selectedIndex) {
     // Incorrect answer selected, add feedback 
     feedbackElement.textContent = "Wrong!";
     feedbackElement.classList.add("wrong-feedback");
+
+    // Play incorrect sound
+    document.getElementById("incorrectSound").play();
 
     secondsLeft = Math.max(0, secondsLeft - 10);
   }
