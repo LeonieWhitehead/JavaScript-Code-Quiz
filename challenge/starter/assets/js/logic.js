@@ -91,24 +91,24 @@ function checkAnswer(selectedIndex) {
     secondsLeft = Math.max(0, secondsLeft - 10);
   }
 
-    // Append the feedback element to the question container
-    questionContainer.appendChild(feedbackElement);
+  // Append the feedback element to the question container
+  questionContainer.appendChild(feedbackElement);
 
-    // setTimeout to remove the feedback
-    setTimeout(() => {
-      feedbackElement.remove();
+  // setTimeout to remove the feedback
+  setTimeout(() => {
+    feedbackElement.remove();
 
-  currentQuestionIndex++;
+    currentQuestionIndex++;
 
-  if (currentQuestionIndex < questions.length) {
-    optionsList.innerHTML = "";
-    showQuestion();
-  } else {
-    quizEnd();
-    questionContainer.classList.add('hide');
-    showResults();
-  }
-}, 1000);
+    if (currentQuestionIndex < questions.length) {
+      optionsList.innerHTML = "";
+      showQuestion();
+    } else {
+      quizEnd();
+      questionContainer.classList.add('hide');
+      showResults();
+    }
+  }, 1000);
 }
 
 function showResults() {
@@ -130,16 +130,21 @@ function showResults() {
 
     // Store the user's initials and score in local storage
     if (userInitials) {
-      let highscores = JSON.parse(localStorage.getItem("highscores")) || [];
-      highscores.push({ initials: userInitials, score: finalScoreValue });
-      localStorage.setItem("highscores", JSON.stringify(highscores));
-    }
-  
+      finalScoreValue = userScore + secondsLeft;
+      saveScore(userInitials, finalScoreValue);
 
-  // optionsList.innerHTML = '';
-  console.log("User selections:", userSelections);
-});
-}
+      // Redirect to highscores page
+    window.location.href = "highscores.html";
+      // let highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+      // highscores.push({ initials: userInitials, score: finalScoreValue });
+      // localStorage.setItem("highscores", JSON.stringify(highscores));
+    }
+  });
+
+
+    // optionsList.innerHTML = '';
+    console.log("User selections:", userSelections);
+  }
 
 function quizEnd() {
   // Stop the timer
@@ -163,16 +168,46 @@ function quizEnd() {
   }
 }
 
-function showHighScores() {
-    // Hide other screens
-    startScreen.classList.add("hide");
-    questionContainer.classList.add('hide');
-    document.querySelector("#end-screen").classList.add("hide");
-
-    // Show high scores screen
-    // Get high scores from local storage
-    // Display high scores
+function saveScore(initials, score) {
+  let highscores = getHighScores();
+  highscores.push({ initials, score });
+  localStorage.setItem("highscores", JSON.stringify(highscores));
 }
+
+function getHighScores() {
+  return JSON.parse(localStorage.getItem("highscores")) || [];
+}
+
+// Function to get highscores from local storage
+function getHighScores() {
+  const highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+  return highscores;
+}
+
+// Function to display highscores on the page
+// function showResults() {
+//   const highscores = getHighScores();
+// }
+
+// Function to clear highscores
+function clearHighScores() {
+  localStorage.removeItem("highscores");
+  showResults();
+}
+
+// document.getElementById("clear").addEventListener("click", function () {
+//   window.location.href = "challenge/starter/index.html";
+// });
+// function showHighScores() {
+//     // Hide other screens
+//     startScreen.classList.add("hide");
+//     questionContainer.classList.add('hide');
+//     document.querySelector("#end-screen").classList.add("hide");
+
+// Show high scores screen
+// Get high scores from local storage
+// Display high scores
+// }
 
 
 // questionTitleEl.textContent = questions
@@ -234,13 +269,13 @@ var storedData = localStorage.getItem("highscores");
 console.log("data: ", storedData);
 console.log("type: ", typeof storedData);
 // data convertion
-var jsData = JSON.parse(storedData);
-console.log("data: ", jsData);
-console.log("type: ", typeof jsData);
-// "[]" | []
-// .push() .pop() .filter() .map()
-jsData.push({ name: "bingo", score: 50 })
-console.log("data: ", jsData);
+// var jsData = JSON.parse(storedData);
+// console.log("data: ", jsData);
+// console.log("type: ", typeof jsData);
+// // "[]" | []
+// // .push() .pop() .filter() .map()
+// jsData.push({ name: "bingo", score: 50 })
+// console.log("data: ", jsData);
 
 // we have to UPDATE locaStorage
-localStorage.setItem("highscores", JSON.stringify(jsData))
+// localStorage.setItem("highscores", JSON.stringify(jsData))
