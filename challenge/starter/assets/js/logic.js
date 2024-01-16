@@ -7,6 +7,7 @@ const questionElement = document.getElementById("question-title");
 const optionsList = document.getElementById("choices");
 const timeCount = document.getElementById("time");
 const finalScore = document.getElementById("final-score");
+const highScores = document.getElementById("highscores");
 
 // track score,time, current question and correct answers
 let currentQuestionIndex = 0;
@@ -160,6 +161,17 @@ function quizEnd() {
     highscores.push({ name: "bingo", score: userScore });
     localStorage.setItem("highscores", JSON.stringify(highscores));
   }
+}
+
+function showHighScores() {
+    // Hide other screens
+    startScreen.classList.add("hide");
+    questionContainer.classList.add('hide');
+    document.querySelector("#end-screen").classList.add("hide");
+
+    // Show high scores screen
+    // Get high scores from local storage
+    // Display high scores
 }
 
 
